@@ -1,0 +1,27 @@
+@use "./_styles/hero";
+@use "./_styles/monster";
+@use "./_styles/abilities";
+@use "./_styles/forms";
+@use "./_styles/register";
+@use "./_styles/reset";
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: #e00000;
+  font-weight: 400;
+  b {
+    font-weight: 700;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}
