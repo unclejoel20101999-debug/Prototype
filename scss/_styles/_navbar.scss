@@ -1,0 +1,38 @@
+.navbar {
+  max-width: 1448px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  //   gap: 231px;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__link {
+    font-weight: 600;
+    font-family: "Roboto";
+    font-style: normal;
+    font-size: 16px;
+    text-align: center;
+    text-decoration-line: underline;
+    color: #e00000 !important;
+  }
+
+  &__button {
+    font-family: Roboto;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    border: none;
+    background: #e00000;
+    width: 228px;
+    height: 42px;
+  }
+}

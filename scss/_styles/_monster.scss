@@ -1,0 +1,59 @@
+.monster__wrapper {
+  margin: 0 auto 240px auto;
+  max-width: 1448px;
+  .monster__container {
+    display: grid;
+    gap: 32px;
+    padding: 64px 0;
+    max-width: 1448px;
+    // height: 396px;
+    .monster__title {
+      // padding-bottom: 16px;
+      font-size: 64px;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    .monster__text p {
+      padding-top: 32px;
+      font-family: "roboto";
+      line-height: 150%;
+      font-style: italic;
+      font-size: 18px;
+      letter-spacing: 0%;
+    }
+
+    .monster__video {
+      max-width: 594px;
+      height: auto;
+      object-fit: cover;
+      box-shadow: 0px 0px 32px #e00000;
+      display: block;
+      background: black;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .monster__container {
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    gap: 16px;
+  }
+
+  .monster__content {
+    grid-column: 6 span;
+  }
+
+  .monster__title {
+    font-size: 48px;
+  }
+
+  .monster__video {
+    grid-column: 8/13;
+  }
+}
