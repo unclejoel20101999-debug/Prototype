@@ -36,34 +36,31 @@
 </header>
 
 <body>
-  <div class="hero__wrapper">
+  <div class="hero">
     <div class="hero__background">
       <video class="hero__background-video" src="video/MP4/alex-mercer-background.mp4" autoplay loop muted></video>
       <div class="hero__background-gradient"></div>
     </div>
     <div class="hero__content">
       <h1 class="hero__title">Олексій Прототипович</h1>
-      <p class="hero__title hero__subtitle" style="font-family: Caveat; font-size: 48px">
+      <p class="hero__subtitle" style="font-family: Caveat; font-size: 48px">
         – Вони заплатять за те шо зробили зі мною... –
       </p>
-      <p class="hero__title hero__subtitle" style="font-family: roboto; font-size: 36px; max-width: 1200px">
+      <p class="hero__subtitle hero__subtitle--large" style="font-family: roboto; font-size: 36px; max-width: 1200px">
         Людина чи <b>вірус</b>? Герой чи <b>катастрофа</b>? Дізнайся історію
         одного з найзаґадковіших персонажів ігрового світу <i>Prototype</i>.
       </p>
     </div>
   </div>
-  <div class="monster__wrapper">
+
+  <div class="monster">
     <div class="monster__container">
       <div class="monster__content">
-        <h2 class="monster__title" style="
-              font-family:
-                Impact, Haettenschweiler, &quot;Arial Narrow Bold&quot;,
-                sans-serif;
-            ">
+        <h2 class="monster__title monster__title--impact">
           Схоже я монстр...
         </h2>
         <div class="monster__text">
-          <p>
+          <p class="monster__paragraph">
             <i>
               Олексій Прототипович був звичайним ученим Gentek, допоки не став
               носієм смертоносного вірусу Blacklight. Після загибелі в
@@ -76,100 +73,107 @@
         </div>
       </div>
       <div class="monster__video">
-        <img src="image/gif/alex-mercer-monster.gif" alt="" />
+        <img class="monster__video-image" src="image/gif/alex-mercer-monster.gif" alt="Alex Mercer transformation" />
       </div>
     </div>
   </div>
-  <div class="abilities__wrapper">
-    <div>
+
+  <div class="abilities">
+    <div class="abilities__header-wrapper">
       <h1 class="abilities__header">Мої здібності</h1>
     </div>
-    <div class="abilities-card__container">
+    <div class="abilities__cards">
       <div class="abilities__card">
-        <img src="image/gif/alex-mercer-consume.gif" alt="" />
-        <h4 class="abilities-card__header">Поглинання</h4>
-        <p class="abilities-card__text">
+        <img class="abilities__card-image" src="image/gif/alex-mercer-consume.gif" alt="Поглинання" />
+        <h4 class="abilities__card-title">Поглинання</h4>
+        <p class="abilities__card-text">
           отримує вигляд, навички й спогади жертв
         </p>
       </div>
       <div class="abilities__card">
-        <img src="image/gif/alex-mercer-transformation.gif" alt="" />
-        <h4 class="abilities-card__header">Трансформації</h4>
-        <p class="abilities-card__text">
+        <img class="abilities__card-image" src="image/gif/alex-mercer-transformation.gif" alt="Трансформації" />
+        <h4 class="abilities__card-title">Трансформації</h4>
+        <p class="abilities__card-text">
           кігті, леза, молоти, щупальця — тіло підлаштовується під будь-яку
           ситуацію
         </p>
       </div>
       <div class="abilities__card">
-        <img src="image/gif/alex-mercer-power.gif" alt="" />
-        <h4 class="abilities-card__header">Сила</h4>
-        <p class="abilities-card__text">
+        <img class="abilities__card-image" src="image/gif/alex-mercer-power.gif" alt="Сила" />
+        <h4 class="abilities__card-title">Сила</h4>
+        <p class="abilities__card-text">
           протистоїть танкам, вертольотам, зараженим та військовим
           спецпідрозділам
         </p>
       </div>
       <div class="abilities__card">
-        <img src="image/gif/alex-mercer-speed.gif" alt="" />
-        <h4 class="abilities-card__header">Швидкість</h4>
-        <p class="abilities-card__text">
+        <img class="abilities__card-image" src="image/gif/alex-mercer-speed.gif" alt="Швидкість" />
+        <h4 class="abilities__card-title">Швидкість</h4>
+        <p class="abilities__card-text">
           може бігти по стінах, стрибати на будівлі та пересуватися містом за
           секунди
         </p>
       </div>
     </div>
   </div>
-  <div class="forms__wrapper">
-    <h1 class="forms__header">Скажені версії</h1>
-    <div class="forms__container">
-      <div class="forms-card">
-        <img class="forms-card__video" src="image/png/alex-mercer-patient-zero.png" alt="" />
-        <h1 class="forms-card__header">Початковий Носій</h1>
-        <p class="forms-card__text">
+
+  <div class="forms">
+    <h1 class="forms__title">Скажені версії</h1>
+    <div class="forms__grid">
+      <div class="forms__card">
+        <img class="forms__card-image" src="image/png/alex-mercer-patient-zero.png"
+          alt="Початковий Носій - Алекс Мерсер" />
+        <h2 class="forms__card-title">Початковий Носій</h2>
+        <p class="forms__card-text">
           Темний худі, холодний погляд, тіло, яке вже не зовсім людське. У цій
           формі Мерсер зберігає людську подобу — але всередині нього кипить
           вірусна енергія. Тиха хижість, яку легко недооцінити.
         </p>
       </div>
-      <div class="forms-card">
-        <img class="forms-card__video" src="image/jpg/alex-mercer-brutal.jpg" alt="" />
-        <h1 class="forms-card__header">Брутальна Форма</h1>
-        <p class="forms-card__text">
-          Руки перетворюються на леза, молоти або кігті. М’язи стають
+      <div class="forms__card">
+        <img class="forms__card-image" src="image/jpg/alex-mercer-brutal.jpg" alt="Брутальна Форма - Алекс Мерсер" />
+        <h2 class="forms__card-title">Брутальна Форма</h2>
+        <p class="forms__card-text">
+          Руки перетворюються на леза, молоти або кігті. М'язи стають
           щільнішими, реакції — вбивчо точними. Це форма для ближнього бою, де
           Мерсер — буря, що розриває все навколо.
         </p>
       </div>
-      <div class="forms-card">
-        <img class="forms-card__video" src="image/png/alex-mercer-massive.png" alt="" />
-        <h1 class="forms-card__header">Потворна Масивність</h1>
-        <p class="forms-card__text">
+      <div class="forms__card">
+        <img class="forms__card-image" src="image/png/alex-mercer-massive.png"
+          alt="Потворна Масивність - Алекс Мерсер" />
+        <h2 class="forms__card-title">Потворна Масивність</h2>
+        <p class="forms__card-text">
           Тіло вкривається важкою органічною бронею. Природна зброя вірусу
           робить Мерсера майже невразливим. Ідеально підходить для прориву
           крізь натовпи чи зіткнення з технікою.
         </p>
       </div>
-      <div class="forms-card">
-        <img class="forms-card__video" src="image/png/alex-mercer-wild-predator.png" alt="" />
-        <h1 class="forms-card__header">Хижі Маніпулятори</h1>
-        <p class="forms-card__text">
+      <div class="forms__card">
+        <img class="forms__card-image" src="image/png/alex-mercer-wild-predator.png"
+          alt="Хижі Маніпулятори - Алекс Мерсер" />
+        <h2 class="forms__card-title">Хижі Маніпулятори</h2>
+        <p class="forms__card-text">
           З тіла вириваються гострі біомаси у вигляді щупалець. Це форма
           хаосу, що дозволяє Мерсеру розривати цілі райони одним ударом. Чиста
           руйнація й контроль території.
         </p>
       </div>
-      <div class="forms-card">
-        <img class="forms-card__video" src="image/png/alex-mercer-full-potential.png" alt="" />
-        <h1 class="forms-card__header">Повне Розкриття</h1>
-        <p class="forms-card__text">
+      <div class="forms__card">
+        <img class="forms__card-image" src="image/png/alex-mercer-full-potential.png"
+          alt="Повне Розкриття - Алекс Мерсер" />
+        <h2 class="forms__card-title">Повне Розкриття</h2>
+        <p class="forms__card-text">
           Найбільш жахлива, майже нелюдська версія. Суміш усіх здібностей,
           розкрита на максимум. У цій формі Мерсер — апокаліпсис, що ходить на
           двох ногах.
         </p>
       </div>
-      <div class="forms-card">
-        <img class="forms-card__video" src="image/jpg/alex-mercer-infected-cityform.jpg" alt="" />
-        <h1 class="forms-card__header">Інфекційний Сітіформ</h1>
-        <p class="forms-card__text">
+      <div class="forms__card">
+        <img class="forms__card-image" src="image/jpg/alex-mercer-infected-cityform.jpg"
+          alt="Інфекційний Сітіформ - Алекс Мерсер" />
+        <h2 class="forms__card-title">Інфекційний Сітіформ</h2>
+        <p class="forms__card-text">
           Форма, яка показує справжній масштаб вірусу всередині Мерсера. У ній
           його тіло частково розчиняється в потоках біомаси, що поширюється
           навколо — вулиці стають продовженням його організму, а територія
@@ -200,29 +204,30 @@
     </div>
   </div>
 
-  <div class="register__wrapper">
+  <div class="register">
     <div class="register__container">
-      <img class="register__video" src="image/gif/alex-mercer-register.gif" alt="" />
-      <div class="register-form__container">
-        <h1 class="register__header">Допоможи мені помститися</h1>
-        <form action="">
-          <input class="register-form__field" type="text" id="name" name="name" required placeholder="Ім‘я" />
+      <img class="register__image" src="image/gif/alex-mercer-register.gif" alt="Alex Mercer transformation" />
+      <div class="register__form-wrapper">
+        <h2 class="register__title">Допоможи мені помститися</h2>
+        <form class="register__form" action="">
+          <input class="register__input" type="text" id="name" name="name" required placeholder="Ім'я" />
 
-          <input class="register-form__field" type="text" id="surname" name="surname" required placeholder="Прізвище" />
+          <input class="register__input" type="text" id="surname" name="surname" required placeholder="Прізвище" />
 
-          <input class="register-form__field" type="text" id="patronymic" name="patronymic" required
+          <input class="register__input" type="text" id="patronymic" name="patronymic" required
             placeholder="По-батькові" />
 
-          <input class="register-form__field" type="tel" id="phone" name="phone" required pattern="[0-9+\-\(\) ]{7,15}"
+          <input class="register__input" type="tel" id="phone" name="phone" required pattern="[0-9+\-\(\) ]{7,15}"
             maxlength="15" placeholder="Номер телефона батьків" />
 
-          <button class="register-form__button" type="submit">
+          <button class="register__button" type="submit">
             Відправити
           </button>
         </form>
       </div>
     </div>
   </div>
+
 </body>
 
 </html>

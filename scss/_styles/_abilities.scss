@@ -1,47 +1,45 @@
-.abilities__wrapper {
+.abilities {
   gap: 16px;
   margin: 0 auto 240px auto;
   max-width: 1448px;
 
-  .abilities__header {
+  &__header-wrapper {
+    margin-bottom: 64px;
+  }
+
+  &__header {
     font-family: "Impact";
     font-size: 64px;
     text-transform: uppercase;
     color: #e00000;
     text-align: center;
-    margin-bottom: 64px; // Space between header and grid
   }
 
-  .abilities-card__container {
+  &__cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
     width: 100%;
-    // height: 368px;
   }
 
-  .abilities__card {
+  &__card {
     display: flex;
     flex-direction: column;
     background: black;
     border: 2px solid #e00000;
     overflow: hidden;
-    // height: 368px
   }
 
-  video,
-  img {
+  &__card-image {
     width: 100%;
     height: 190px;
     object-fit: cover;
-    flex-shrink: 0; // Prevents shrinking
-    z-index: 1;
+    flex-shrink: 0;
     display: block;
   }
 
-  .abilities-card__header {
+  &__card-title {
     text-align: center;
-    z-index: 2;
     font-family: Arial, Helvetica, sans-serif;
     background: rgba(0, 0, 0, 0.5);
     font-size: 30px;
@@ -51,11 +49,10 @@
     padding-top: 24px;
   }
 
-  .abilities-card__text {
+  &__card-text {
     font-size: 16px;
     line-height: 150%;
     font-style: italic;
-    z-index: 2;
     font-family: "roboto";
     text-align: center;
     padding: 10px 10px 36px 10px;

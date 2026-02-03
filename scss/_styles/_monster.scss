@@ -1,39 +1,45 @@
-.monster__wrapper {
+.monster {
   margin: 0 auto 240px auto;
   max-width: 1448px;
-  .monster__container {
+
+  &__container {
     display: grid;
     gap: 32px;
     padding: 64px 0;
     max-width: 1448px;
-    // height: 396px;
-    .monster__title {
-      // padding-bottom: 16px;
-      font-size: 64px;
-      margin-bottom: 0;
-      margin-top: 0;
+  }
+
+  &__title {
+    font-size: 64px;
+    margin: 0;
+
+    &--impact {
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     }
+  }
 
-    .monster__text p {
-      padding-top: 32px;
-      font-family: "roboto";
-      line-height: 150%;
-      font-style: italic;
-      font-size: 18px;
-      letter-spacing: 0%;
-    }
+  &__text {
+    padding-top: 32px;
+  }
 
-    .monster__video {
-      max-width: 594px;
-      height: auto;
-      object-fit: cover;
-      box-shadow: 0px 0px 32px #e00000;
-      display: block;
-      background: black;
+  &__paragraph {
+    font-family: "roboto";
+    line-height: 150%;
+    font-style: italic;
+    font-size: 18px;
+    letter-spacing: 0%;
+  }
 
-      img {
-        width: 100%;
-      }
+  &__video {
+    max-width: 594px;
+    height: auto;
+    object-fit: cover;
+    box-shadow: 0px 0px 32px #e00000;
+    display: block;
+    background: black;
+
+    &-image {
+      width: 100%;
     }
   }
 }

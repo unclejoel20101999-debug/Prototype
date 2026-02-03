@@ -1,11 +1,11 @@
-.hero__wrapper {
+.hero {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100vh;
 }
-.hero__wrapper .hero__background {
+.hero__background {
   position: absolute;
   left: 0;
   top: 0;
@@ -13,13 +13,13 @@
   height: 100%;
   z-index: -1;
 }
-.hero__wrapper .hero__background .hero__background-video {
+.hero__background-video {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.hero__wrapper .hero__background .hero__background-gradient {
+.hero__background-gradient {
   position: absolute;
   left: 0;
   top: 0;
@@ -27,40 +27,51 @@
   height: 100%;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.65) 28.17%, rgba(0, 0, 0, 0.9) 58.6%, #000000 100%);
 }
-.hero__wrapper .hero__content {
+.hero__content {
   margin: 50px;
 }
-.hero__wrapper .hero__content .hero__title {
+.hero__title {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 96px;
   margin: 50px;
   text-align: center;
 }
+.hero__subtitle {
+  text-align: center;
+  margin-top: 50px;
+}
+.hero__subtitle_large {
+  max-width: 1200px;
+}
 
-.monster__wrapper {
+.monster {
   margin: 0 auto 240px auto;
   max-width: 1448px;
 }
-.monster__wrapper .monster__container {
+.monster__container {
   display: grid;
   gap: 32px;
   padding: 64px 0;
   max-width: 1448px;
 }
-.monster__wrapper .monster__container .monster__title {
+.monster__title {
   font-size: 64px;
-  margin-bottom: 0;
-  margin-top: 0;
+  margin: 0;
 }
-.monster__wrapper .monster__container .monster__text p {
+.monster__title--impact {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+.monster__text {
   padding-top: 32px;
+}
+.monster__paragraph {
   font-family: "roboto";
   line-height: 150%;
   font-style: italic;
   font-size: 18px;
   letter-spacing: 0%;
 }
-.monster__wrapper .monster__container .monster__video {
+.monster__video {
   max-width: 594px;
   height: auto;
   -o-object-fit: cover;
@@ -69,7 +80,7 @@
   display: block;
   background: black;
 }
-.monster__wrapper .monster__container .monster__video img {
+.monster__video-image {
   width: 100%;
 }
 
@@ -89,45 +100,44 @@
     grid-column: 8/13;
   }
 }
-.abilities__wrapper {
+.abilities {
   gap: 16px;
   margin: 0 auto 240px auto;
   max-width: 1448px;
 }
-.abilities__wrapper .abilities__header {
+.abilities__header-wrapper {
+  margin-bottom: 64px;
+}
+.abilities__header {
   font-family: "Impact";
   font-size: 64px;
   text-transform: uppercase;
   color: #e00000;
   text-align: center;
-  margin-bottom: 64px;
 }
-.abilities__wrapper .abilities-card__container {
+.abilities__cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   width: 100%;
 }
-.abilities__wrapper .abilities__card {
+.abilities__card {
   display: flex;
   flex-direction: column;
   background: black;
   border: 2px solid #e00000;
   overflow: hidden;
 }
-.abilities__wrapper video,
-.abilities__wrapper img {
+.abilities__card-image {
   width: 100%;
   height: 190px;
   -o-object-fit: cover;
      object-fit: cover;
   flex-shrink: 0;
-  z-index: 1;
   display: block;
 }
-.abilities__wrapper .abilities-card__header {
+.abilities__card-title {
   text-align: center;
-  z-index: 2;
   font-family: Arial, Helvetica, sans-serif;
   background: rgba(0, 0, 0, 0.5);
   font-size: 30px;
@@ -136,18 +146,17 @@
   justify-content: center;
   padding-top: 24px;
 }
-.abilities__wrapper .abilities-card__text {
+.abilities__card-text {
   font-size: 16px;
   line-height: 150%;
   font-style: italic;
-  z-index: 2;
   font-family: "roboto";
   text-align: center;
   padding: 10px 10px 36px 10px;
   background: rgba(0, 0, 0, 0.65);
 }
 
-.forms__wrapper {
+.forms {
   display: grid;
   grid-template-rows: auto 1fr;
   justify-items: center;
@@ -155,13 +164,13 @@
   max-width: 1448px;
   margin: 0 auto 240px auto;
 }
-.forms__wrapper .forms__header {
+.forms__title {
   font-size: 64px;
   text-align: center;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   margin-bottom: 64px;
 }
-.forms__wrapper .forms__container {
+.forms__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -169,38 +178,36 @@
   max-width: 1448px;
   height: 752px;
 }
-.forms__wrapper .forms__container .forms-card {
+.forms__card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  position: relative; /* To handle z-index positioning */
-  max-width: 720px;
-  max-height: 240px;
   justify-content: center;
   align-content: center;
+  position: relative;
+  max-width: 720px;
+  max-height: 240px;
   padding: 32px;
 }
-.forms__wrapper .forms__container .forms-card__video {
+.forms__card-image {
   width: 100%;
   height: 100%;
   max-width: 720px;
   max-height: 240px;
   -o-object-fit: cover;
      object-fit: cover;
-  z-index: 1;
   opacity: 0.2;
   position: absolute;
   top: 0;
   left: 0;
 }
-.forms__wrapper .forms__container .forms-card__header {
+.forms__card-title {
   align-self: center;
   z-index: 2;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   font-size: 30px;
 }
-.forms__wrapper .forms__container .forms-card__text {
+.forms__card-text {
   align-self: center;
   z-index: 2;
   padding-top: 10px;
@@ -211,17 +218,17 @@
   font-family: "roboto";
 }
 
-.register__wrapper {
+.register {
   max-width: 1448px;
   margin: 0 auto;
   padding-bottom: 240px;
 }
-.register__wrapper .register__container {
+.register__container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
-.register__wrapper .register__container .register__video {
+.register__image {
   width: 100%;
   height: 480px;
   box-shadow: 0px 0px 32px #e00000;
@@ -229,7 +236,7 @@
      object-fit: cover;
   transform: matrix(-1, 0, 0, 1, 0, 0);
 }
-.register__wrapper .register__container .register-form__container {
+.register__form-wrapper {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -238,7 +245,7 @@
   align-items: center;
   justify-content: center;
 }
-.register__wrapper .register__container .register-form__container .register__header {
+.register__title {
   font-family: "Impact";
   font-style: normal;
   font-weight: 400;
@@ -249,7 +256,10 @@
   margin: 0 0 24px 0;
   width: 400px;
 }
-.register__wrapper .register__container .register-form__container .register-form__field {
+.register__form {
+  width: 100%;
+}
+.register__input {
   width: 100%;
   height: 40px;
   border: none;
@@ -262,18 +272,18 @@
   outline: none;
   margin-bottom: 16px;
 }
-.register__wrapper .register__container .register-form__container .register-form__field:focus {
+.register__input::-moz-placeholder {
+  color: #e00000;
+  opacity: 1;
+}
+.register__input::placeholder {
+  color: #e00000;
+  opacity: 1;
+}
+.register__input:focus {
   border-bottom-color: #ff3333;
 }
-.register__wrapper .register__container .register-form__container .register-form__field::-moz-placeholder {
-  color: #e00000;
-  opacity: 1;
-}
-.register__wrapper .register__container .register-form__container .register-form__field::placeholder {
-  color: #e00000;
-  opacity: 1;
-}
-.register__wrapper .register__container .register-form__container .register-form__button {
+.register__button {
   margin-top: 16px;
   width: 100%;
   height: 42px;
@@ -286,7 +296,7 @@
   cursor: pointer;
   transition: background 0.2s ease;
 }
-.register__wrapper .register__container .register-form__container .register-form__button:hover {
+.register__button:hover {
   background: #ad0000;
 }
 
