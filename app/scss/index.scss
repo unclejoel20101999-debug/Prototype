@@ -1,0 +1,31 @@
+.hero {
+  max-width: 1920px;
+  max-height: 1080px;
+
+  &__background {
+    position: relative;
+  }
+
+  &__background__image {
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+  }
+
+  &__background__gradient {
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    left: 0px;
+    top: 0px;
+
+    background: linear-gradient(
+      180deg,
+      #000000 0%,
+      rgba(0, 0, 0, 0.5) 18.27%,
+      rgba(0, 0, 0, 0.65) 38.94%,
+      rgba(0, 0, 0, 0.9) 68.27%,
+      #000000 100%
+    );
+  }
+}

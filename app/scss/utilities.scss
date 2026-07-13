@@ -1,0 +1,37 @@
+.visible-on-mobile {
+	@media (min-width: 992px) {
+		display: none !important;
+	}
+}
+
+.visible-on-desktop {
+	@media (max-width: 991px) {
+		display: none !important;
+	}
+}
+
+.visually-hidden {
+	position: absolute;
+
+	width: 1px; height: 1px;
+	
+	margin: -1px; padding: 0;
+
+	border: 0;
+	
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	
+	overflow: hidden;
+}
+
+.image-aspect-ratio {
+	width: 100%; height: auto;
+
+	object-fit: cover;
+
+	@supports (aspect-ratio: 1) {
+		aspect-ratio: var(--aspect-ratio);
+	}
+}

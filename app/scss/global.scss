@@ -1,0 +1,68 @@
+@use 'sass:math';
+
+:root {
+	--title-font: 'Arial', system-ui;
+	--main-font: 'Arial', system-ui;
+	
+	--accent: #5ec63f;
+	--accent-hover: #71db50;
+	--accent-active: #4eb42f;
+
+	--background: #FFF;
+	--text-color: #000;
+
+	--container-gap: 16px;
+	--container: 1440px;
+}
+
+html {
+	min-width: 320px; min-height: 100vh; min-height: 100svh;
+
+	font-size: 16px;
+
+	--container-padding: var(--container-gap);
+
+	@media (min-width: 1440px) {
+		--container-padding: max(var(--container-gap), calc(50% - (var(--container) / 2)));
+	}
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+
+	min-width: 320px; min-height: 100vh; min-height: 100svh;
+
+	font-family: var(--main-font);
+	font-weight: 400;
+	line-height: 150%;
+
+	&.is-mobile-nav-active {
+		overflow: hidden;
+	}
+}
+
+section {
+	position: relative;
+	
+	z-index: 2;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+
+	flex: 1 1 auto;
+}
+
+.main {
+	position: relative;
+
+	flex: 1 0 auto;
+
+	overflow: hidden;
+}
+
+.container, section, .header, .footer {
+	padding-inline: var(--container-padding);
+}
