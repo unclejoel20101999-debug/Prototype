@@ -1,3 +1,5 @@
+@use "./reset.scss";
+
 .hero {
   max-width: 1920px;
   max-height: 1080px;
@@ -27,5 +29,60 @@
       rgba(0, 0, 0, 0.9) 68.27%,
       #000000 100%
     );
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__content__headers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__content__headers__title {
+    h1 {
+      font-family: "Impact";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 96px;
+      line-height: 117px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #ff4400;
+      text-shadow: 0px 0px 10px #e00000;
+    }
+  }
+
+  &__content__headers__subtitle {
+    h3 {
+      font-family: "Caveat";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 60px;
+      color: #ff4400;
+      text-shadow:
+        0px 0px 10px rgba(224, 0, 0, 0.25),
+        0px 0px 15px #e00000;
+    }
+  }
+
+  &__content__headers__description {
+    h3 {
+      font-family: "Overpass";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 36px;
+      line-height: 46px;
+      text-align: center;
+      color: #ff4400;
+      text-shadow:
+        0px 0px 10px rgba(224, 0, 0, 0.25),
+        0px 0px 15px #e00000;
+    }
   }
 }
