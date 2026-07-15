@@ -1,5 +1,5 @@
 import path from "path";
-import del from "del";
+import { deleteAsync as del } from "del";
 import fs from 'fs-extra';
 
 function removeEmptyDirs(dir, exceptions = []) {

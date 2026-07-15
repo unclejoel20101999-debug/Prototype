@@ -5,15 +5,16 @@ import postcss from "gulp-postcss";
 import postcssSortMediaQueries from "postcss-sort-media-queries";
 import autoprefixer from "autoprefixer";
 import uglify from "gulp-uglify";
-import del from "del";
+import { deleteAsync as del } from "del";
 import browserSync from 'browser-sync';
 import createZip from "gulp-zip";
 import cssnano from "cssnano";
 import newer from "gulp-newer";
-import webp from "gulp-webp";
 import include from "gulp-file-include";
 import beautify from "gulp-beautify";
 import fs from "fs";
+import sharp from 'sharp';
+import wawoff2 from 'wawoff2';
 import config from "./gulp/config.js";
 import path from 'path';
 import chokidar from "chokidar";
@@ -38,25 +39,36 @@ export function clean() {
 
 
 // HTML
-async function html() {
-	const plumber = (await import('gulp-plumber')).default,
-		notify = (await import('gulp-notify')).default;
+function onError(err) {
+	console.error(`\x1b[31mError: ${err.message}\x1b[0m`);
+	this.emit('end');
+}
 
-	return src(paths.src.html)
-		.pipe(plumber({ errorHandler: notify.onError("Error: <%= error.message %>") }))
-		.pipe(include({ context: { version: Date.now().toString() } }))
-		.pipe(beautify.html({ indent_size: 1, indent_char: "\t" }))
-		.pipe(dest(paths.build.html))
-		.pipe(bs.stream());
+async function html() {
+	const plumber = (await import('gulp-plumber')).default;
+
+	return new Promise(resolve => {
+		src(paths.src.html)
+			.pipe(plumber({ errorHandler: onError }))
+			.pipe(include({ context: { version: Date.now().toString() } }))
+			.pipe(beautify.html({ indent_size: 1, indent_char: "\t" }))
+			.pipe(dest(paths.build.html))
+			.pipe(bs.stream())
+			.on('error', () => resolve())
+			.on('finish', () => resolve());
+	});
 }
 
 async function htmlComponents() {
-	const plumber = (await import('gulp-plumber')).default,
-		notify = (await import('gulp-notify')).default;
+	const plumber = (await import('gulp-plumber')).default;
 
-	return src(paths.src.html_components)
-		.pipe(plumber({ errorHandler: notify.onError("Error: <%= error.message %>") }))
-		.pipe(include());
+	return new Promise(resolve => {
+		src(paths.src.html_components)
+			.pipe(plumber({ errorHandler: onError }))
+			.pipe(include())
+			.on('error', () => resolve())
+			.on('finish', () => resolve());
+	});
 }
 
 
@@ -223,58 +235,107 @@ async function gitignore(cb) {
 }
 
 
-// Font conversion (TTF -> WOFF2)
+// Font conversion (TTF -> WOFF2 via wawoff2, pure JS, no node-gyp)
 export async function fonts() {
-	const ttf2woff2 = (await import('gulp-ttf2woff2')).default;
-
 	await finished(
 		src(paths.src.fonts, { encoding: false, removeBOM: false })
-			.pipe(newer({
-				dest: paths.build.fonts,
-				ext: '.woff2'
+			.pipe(newer({ dest: paths.build.fonts, ext: '.woff2' }))
+			.pipe(buffer())
+			.pipe(through.obj(function (file, _, callback) {
+				if (file.isNull()) return callback(null, file);
+
+				wawoff2.compress(file.contents)
+					.then(buf => {
+						file.contents = Buffer.from(buf);
+						file.path = file.path.replace(/\.\w+$/, '.woff2');
+						callback(null, file);
+					})
+					.catch(callback);
 			}))
-			.pipe(ttf2woff2())
 			.pipe(dest(paths.build.fonts))
 	);
 }
 
 
-// Image Optimization
-async function otherImages() {
-	const imagemin = (await import('gulp-imagemin')).default;
-
+// Image Optimization (via sharp)
+async function optimizeImages() {
 	await finished(
 		src(paths.src.img, { encoding: false })
 			.pipe(newer(paths.build.img))
-			.pipe(imagemin())
+			.pipe(buffer())
+			.pipe(through.obj(function (file, _, callback) {
+				if (file.isNull()) return callback(null, file);
 
+				const ext = path.extname(file.path).toLowerCase();
+
+				if (ext === '.jpg' || ext === '.jpeg') {
+					sharp(file.contents)
+						.jpeg({ quality: 85, mozjpeg: true })
+						.toBuffer()
+						.then(buf => { file.contents = buf; callback(null, file); })
+						.catch(callback);
+				} else if (ext === '.png') {
+					sharp(file.contents)
+						.png({ quality: 85, palette: true })
+						.toBuffer()
+						.then(buf => { file.contents = buf; callback(null, file); })
+						.catch(callback);
+				} else {
+					// GIF, SVG, WebP, AVIF — pass through as-is
+					callback(null, file);
+				}
+			}))
 			.pipe(dest(paths.build.img))
 	);
 }
 
+// Convert to AVIF via sharp
 async function avifImages() {
-	const avif = (await import('gulp-avif')).default;
-
 	await finished(
 		src(paths.src.img_avif, { encoding: false })
-			.pipe(newer(paths.build.img))
-			.pipe(avif({ quality: 65 }))
+			.pipe(newer({ dest: paths.build.img, ext: '.avif' }))
+			.pipe(buffer())
+			.pipe(through.obj(function (file, _, callback) {
+				if (file.isNull()) return callback(null, file);
 
+				sharp(file.contents)
+					.avif({ quality: 65 })
+					.toBuffer()
+					.then(buf => {
+						file.contents = buf;
+						file.path = file.path.replace(/\.\w+$/, '.avif');
+						callback(null, file);
+					})
+					.catch(callback);
+			}))
 			.pipe(dest(paths.build.img))
 	);
 }
 
+// Convert to WebP via sharp
 async function webpImages() {
 	await finished(
-		src(paths.src.img, { encoding: false })
-			.pipe(newer(paths.build.img))
-			.pipe(webp())
+		src(paths.src.img_webp, { encoding: false })
+			.pipe(newer({ dest: paths.build.img, ext: '.webp' }))
+			.pipe(buffer())
+			.pipe(through.obj(function (file, _, callback) {
+				if (file.isNull()) return callback(null, file);
 
+				sharp(file.contents)
+					.webp({ quality: 80 })
+					.toBuffer()
+					.then(buf => {
+						file.contents = buf;
+						file.path = file.path.replace(/\.\w+$/, '.webp');
+						callback(null, file);
+					})
+					.catch(callback);
+			}))
 			.pipe(dest(paths.build.img))
 	);
 }
 
-const images = parallel(avifImages, webpImages, otherImages);
+const images = parallel(avifImages, webpImages, optimizeImages);
 
 
 // Just reload
