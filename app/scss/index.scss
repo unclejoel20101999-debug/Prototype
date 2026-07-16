@@ -1,17 +1,31 @@
 @use "./reset.scss";
 
+
 .hero {
-  max-width: 1920px;
+ max-width: 1920px;
   max-height: 1080px;
+  // position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   &__background {
-    position: relative;
+    // position: absolute;
+    z-index: -3;
+    width: 1920px;
+    height: 1080px;
   }
 
   &__background__image {
     position: absolute;
-    width: 1920px;
-    height: 1080px;
+    z-index: -3;
+
+    img {
+      width: 1920px;
+      height: 1080px;
+      // object-fit: cover;
+    }
   }
 
   &__background__gradient {
@@ -31,9 +45,15 @@
     );
   }
 
+  &__container {
+  }
+
   &__content {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 335px 60px;
   }
 
   &__content__headers {
@@ -41,9 +61,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 50px;
+
   }
 
   &__content__headers__title {
+    // margin-bottom: 50px;
     h1 {
       font-family: "Impact";
       font-style: normal;
@@ -58,6 +81,7 @@
   }
 
   &__content__headers__subtitle {
+    // margin-bottom: 50px;
     h3 {
       font-family: "Caveat";
       font-style: normal;
