@@ -1,10 +1,8 @@
 @use "./reset.scss";
 
-
 .hero {
- max-width: 1920px;
+  max-width: 1920px;
   max-height: 1080px;
-  // position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -62,7 +60,6 @@
     justify-content: center;
     align-items: center;
     gap: 50px;
-
   }
 
   &__content__headers__title {
